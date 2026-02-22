@@ -180,7 +180,10 @@ int             copyin(pagetable_t, char *, uint64, uint64);
 int             copyinstr(pagetable_t, char *, uint64, uint64);
 pagetable_t     sjr_kvminit();
 void		sjr_kvmmap(pagetable_t pgtl);
-
+int		copyin_new(pagetable_t ,char*,uint64,uint64);
+int		copyinstr_new(pagetable_t,char*,uint64,uint64);
+int		kuvmmapping(pagetable_t,pagetable_t,uint64,uint64);
+uint64		kvmdealloc(pagetable_t,uint64,uint64);
 // plic.c
 void            plicinit(void);
 void            plicinithart(void);

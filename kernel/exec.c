@@ -107,7 +107,9 @@ exec(char *path, char **argv)
     if(*s == '/')
       last = s+1;
   safestrcpy(p->name, last, sizeof(p->name));
-    
+  
+  uvmunmap(p->kernelpagetable,0,PGROUNDUP(oldsz)/PGSIZE,0);
+  kuvmmapping(pagetable,p->kernelpagetable,0,sz);  
   // Commit to the user image.
   oldpagetable = p->pagetable;
   p->pagetable = pagetable;
